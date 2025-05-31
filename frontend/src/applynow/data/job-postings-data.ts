@@ -44,7 +44,7 @@ export interface FiltersResponse {
 export const getJobPostings = async (
   query: string = ""
 ): Promise<JobListResponse> => {
-  const res = await fetch(`${BASE_URL}/jobs${query}`);
+  const res = await fetch(`${BASE_URL}/jobs/${query}`);
   if (!res.ok) {
     throw new Error("Failed to fetch job postings");
   }
