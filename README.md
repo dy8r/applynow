@@ -106,4 +106,4 @@ Each microservice is standalone and can be scaled independently.
 - 🛠️ Easily extensible to more companies and locations
 - 🔓 100% free & open source
 - 🌐 Live: [applynow.dev](https://applynow.dev)
-- 🧑‍💻 GitHub: [github.com/yourusername/applynow](https://github.com/yourusername/applynow)
+- 🧑‍💻 GitHub: [github.com/dy8r/applynow](https://github.com/dy8r/applynow)
