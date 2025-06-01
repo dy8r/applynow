@@ -48,3 +48,40 @@ CREATE TABLE IF NOT EXISTS job_notifications_queue (
     FOREIGN KEY (job_id) REFERENCES jobs(id) ON DELETE CASCADE
 );
 CREATE INDEX idx_notified_event ON job_notifications_queue (notified, event_type);
+
+
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT PRIMARY KEY,  -- Telegram user ID
+    username VARCHAR(64),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE IF NOT EXISTS job_alert_filters (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+
+    is_active BOOLEAN DEFAULT TRUE,         -- Whether alerts are currently enabled
+    is_winnipeg BOOLEAN,                    -- Optional filter
+
+    salary_min INT,
+    salary_max INT,
+
+    work_models JSON,                       -- e.g. ["remote", "on-site"]
+    seniorities JSON,                       -- e.g. ["entry", "mid"]
+    companies JSON,                         -- e.g. ["Neo", "Bold"]
+    departments JSON,                       -- e.g. ["software_engineering", "design"]
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Speed up lookups when checking alerts for a user
+CREATE INDEX idx_alerts_user_id ON job_alert_filters (user_id);
+
+-- Filter only active ones during processing
+CREATE INDEX idx_alerts_is_active ON job_alert_filters (is_active);
+
+-- Optional: for time-based analysis
+CREATE INDEX idx_alerts_created_at ON job_alert_filters (created_at);
