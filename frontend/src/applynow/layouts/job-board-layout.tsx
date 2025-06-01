@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import AlertDialog from "../components/alert-dialog";
+import { Analytics } from '@vercel/analytics/next';
 
 interface JobBoardLayoutProps {
   children: React.ReactNode;
@@ -164,6 +165,7 @@ export default function JobBoardLayout({ children }: JobBoardLayoutProps) {
       {/* Main content */}
       <main className="flex-1">
           {children}
+          <Analytics />
       </main>
 
 
