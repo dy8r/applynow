@@ -29,11 +29,15 @@ def matches_filters(job: dict, alert: dict) -> bool:
 
 
 def format_job_alert(job: dict) -> str:
+    location = job.get("location")
+    if not location and job.get("is_winnipeg"):
+        location = "Winnipeg"
+        
     return (
         f"📢 **New Job Posted!**\n\n"
         f"🏢 **Company**: {job['company']}\n"
         f"💼 **Title**: {job['title']}\n"
-        f"📍 **Location:** {job['location'] or 'N/A'}\n"
+        f"📍 **Location:** {location or 'N/A'}\n"
         f"💰 **Salary:** {job.get('salary_min') or 'N/A'} - {job.get('salary_max') or 'N/A'}\n\n"
         f"🔗 [Apply Here]({job['link']})"
     )
