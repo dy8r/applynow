@@ -75,3 +75,19 @@ export const getJobPostingById = async (
   }
   return res.json();
 }
+
+export const sendAnalytics = async (path?: string): Promise<void> => {
+  const actualPath = path || window.location.pathname
+  console.log(actualPath)
+  const res = await fetch(`${BASE_URL}/analytics`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ path: actualPath })
+  });
+
+  if (!res.ok) {
+    console.warn("Analytics failed:", await res.text());
+  }
+}

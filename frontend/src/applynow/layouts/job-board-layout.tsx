@@ -11,12 +11,14 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import AlertDialog from "../components/alert-dialog";
+import { useAnalytics } from "@/applynow/hooks/use-analytics"
 
 interface JobBoardLayoutProps {
   children: React.ReactNode;
 }
 
 export default function JobBoardLayout({ children }: JobBoardLayoutProps) {
+  useAnalytics(window.location.pathname)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const location = useLocation();

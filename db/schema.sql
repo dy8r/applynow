@@ -85,3 +85,15 @@ CREATE INDEX idx_alerts_is_active ON job_alert_filters (is_active);
 
 -- Optional: for time-based analysis
 CREATE INDEX idx_alerts_created_at ON job_alert_filters (created_at);
+
+
+CREATE TABLE IF NOT EXISTS page_analytics (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    hashed_ip CHAR(64) NOT NULL, -- SHA-256 hex length
+    path VARCHAR(255) NOT NULL,
+    user_agent TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Index for counting unique viewers per page
+CREATE INDEX idx_path_hashed_ip ON page_analytics (path, hashed_ip);

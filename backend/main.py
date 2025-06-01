@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from utils.limiter import limiter
-from routes import jobs, companies, filters
+from routes import jobs, companies, filters, analytics
 
 app = FastAPI(title="Job API")
 app.add_middleware(
@@ -26,3 +26,4 @@ async def rate_limit_handler(request, exc):
 app.include_router(jobs.router)
 app.include_router(companies.router)
 app.include_router(filters.router)
+app.include_router(analytics.router)
