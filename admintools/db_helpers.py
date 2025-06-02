@@ -1,14 +1,24 @@
 import os
-import psycopg2
+import mysql.connector
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+from urllib.parse import urlparse
 
 load_dotenv()
 
-DB_URL = os.getenv("DATABASE_URL")
+parsed = urlparse(os.getenv("DATABASE_URL"))
+
+DB_CONFIG = {
+    'host': parsed.hostname,
+    'port': parsed.port or 3306,
+    'user': parsed.username,
+    'password': parsed.password,
+    'database': parsed.path.lstrip('/')
+}
+
 
 def get_connection():
-    return psycopg2.connect(DB_URL)
+    return mysql.connector.connect(**DB_CONFIG)
 
 def get_distinct_ips(days: int) -> int:
     conn = get_connection()
