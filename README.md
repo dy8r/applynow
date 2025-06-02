@@ -4,6 +4,9 @@ ApplyNow is an open-source microservice-based job alert platform built to help j
 
 It scrapes company job boards, enriches listings with AI, and alerts users via Telegram — all fully automated and free.
 
+You can use it live at [applynow.dev](https://applynow.dev)
+Get alerts in [Telegram](https://t.me/applynowalerts_bot)
+
 ---
 
 ## frontend/
