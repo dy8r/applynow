@@ -25,7 +25,7 @@ def get_distinct_ips(days: int) -> int:
     cur = conn.cursor()
     since = datetime.utcnow() - timedelta(days=days)
     cur.execute(
-        "SELECT COUNT(DISTINCT hashed_ip) FROM page_analytics WHERE timestamp > %s",
+        "SELECT COUNT(DISTINCT hashed_ip) FROM page_analytics WHERE created_at > %s",
         (since,)
     )
     count = cur.fetchone()[0]
