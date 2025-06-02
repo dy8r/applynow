@@ -9,4 +9,6 @@ def main():
         priceline.extract_job_postings()
         bold.extract_job_postings()
         pollard.extract_job_postings()
-        time.sleep(random.randint(60, 300))  # Sleep for a random time between 1 and 5 minutes
+        tts = random.randint(60, 300)
+        print(f"Sleeping for {tts} seconds before next cycle...")
+        time.sleep(tts)
