@@ -36,7 +36,7 @@ def get_distinct_ips(days: int) -> int:
 def get_tg_user_count() -> int:
     conn = get_connection()
     cur = conn.cursor()
-    cur.execute("SELECT COUNT(*) FROM users WHERE tg_id IS NOT NULL")
+    cur.execute("SELECT COUNT(*) FROM users WHERE id IS NOT NULL")
     count = cur.fetchone()[0]
     cur.close()
     conn.close()
