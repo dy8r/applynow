@@ -19,7 +19,7 @@ API_ID = int(os.getenv("TG_API_ID"))
 API_HASH = os.getenv("TG_API_HASH")
 BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
 
-bot = TelegramClient("job_alert_bot", API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+bot = TelegramClient("bot", API_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
 def filter_buttons(user_id: int, field: str):
     buttons_raw = get_filter_buttons(user_id, field)
