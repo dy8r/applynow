@@ -257,21 +257,22 @@ export default function FilterSidebar({
         type="multiple"
         defaultValue={["seniority", "job-type", "work-model"]}
       >
+
+        {departments.length > 0 && (
+          <FilterGroup
+        title="Department"
+        options={departments}
+        selectedOptions={selectedDepartments}
+        onChange={handleDepartmentChange}
+          />
+        )}
+
         {seniority.length > 0 && (
           <FilterGroup
         title="Seniority"
         options={seniority}
         selectedOptions={selectedSeniority}
         onChange={handleSeniorityChange}
-          />
-        )}
-
-        {jobTypes.length > 0 && (
-          <FilterGroup
-        title="Job Type"
-        options={jobTypes}
-        selectedOptions={selectedJobTypes}
-        onChange={handleJobTypeChange}
           />
         )}
 
@@ -284,12 +285,12 @@ export default function FilterSidebar({
           />
         )}
 
-        {departments.length > 0 && (
+        {jobTypes.length > 0 && (
           <FilterGroup
-        title="Department"
-        options={departments}
-        selectedOptions={selectedDepartments}
-        onChange={handleDepartmentChange}
+        title="Job Type"
+        options={jobTypes}
+        selectedOptions={selectedJobTypes}
+        onChange={handleJobTypeChange}
           />
         )}
 

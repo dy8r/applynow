@@ -203,7 +203,7 @@ export default function JobBoardLayout({ children }: JobBoardLayoutProps) {
             </div>
 
             <div>
-              <h3 className="font-medium mb-3 dark:text-gray-200">For everyone else</h3>
+              <h3 className="font-medium mb-3 dark:text-gray-200">For Everyone Else</h3>
               <ul className="space-y-2">
                 <li>
                   <Link

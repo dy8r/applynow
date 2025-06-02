@@ -85,7 +85,7 @@ export default function AlertDialog({ trigger }: AlertDialogProps) {
               window.open("https://t.me/applynowalerts_bot", "_blank")
             }
           >
-            Join Telegram Channel
+            Start Telegram Bot
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
